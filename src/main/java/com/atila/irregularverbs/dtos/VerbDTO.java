@@ -10,7 +10,7 @@ public class VerbDTO implements Serializable {
     private Long id;
 
     @NotBlank
-    @Size(min = 2)
+    @Size(min = 2, max = 50)
     private String infinitive;
 
     @NotBlank
