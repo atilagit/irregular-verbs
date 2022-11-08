@@ -3,6 +3,7 @@ package com.atila.irregularverbs.services;
 import com.atila.irregularverbs.dtos.VerbDTO;
 import com.atila.irregularverbs.entities.Verb;
 import com.atila.irregularverbs.repositories.VerbRepository;
+import com.atila.irregularverbs.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,8 +40,9 @@ public class VerbService {
         return allVerbsDTO;
     }
 
-    public VerbDTO getById(Long id) {
-        Verb verb = verbRepository.getById(id);
+    public VerbDTO findById(Long id) {
+        Verb verb = verbRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Resource not found - Name: " + Verb.class + ", Id: " + id));
         var verbDTO = new VerbDTO();
         copyProperties(verb, verbDTO);
         return verbDTO;

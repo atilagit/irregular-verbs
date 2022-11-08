@@ -33,7 +33,7 @@ public class VerbController {
 
     @GetMapping("/{id}")
     public ResponseEntity<VerbDTO> getById(@PathVariable Long id) {
-        VerbDTO verbDTO = verbService.getById(id);
+        VerbDTO verbDTO = verbService.findById(id);
         return ResponseEntity.ok(verbDTO);
     }
 }
