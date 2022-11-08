@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class VerbDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @NotBlank
     private Long id;
 
     @NotBlank
