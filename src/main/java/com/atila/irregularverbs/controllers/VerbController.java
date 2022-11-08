@@ -36,4 +36,10 @@ public class VerbController {
         VerbDTO verbDTO = verbService.findById(id);
         return ResponseEntity.ok(verbDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+        verbService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

@@ -5,6 +5,7 @@ import com.atila.irregularverbs.entities.Verb;
 import com.atila.irregularverbs.repositories.VerbRepository;
 import com.atila.irregularverbs.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -47,5 +48,13 @@ public class VerbService {
         var verbDTO = new VerbDTO();
         copyProperties(verb, verbDTO);
         return verbDTO;
+    }
+
+    public void deleteById(Long id) {
+        try {
+            verbRepository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException("Id " + id + " not found");
+        }
     }
 }
