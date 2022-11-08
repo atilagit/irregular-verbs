@@ -7,6 +7,7 @@ import com.atila.irregularverbs.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class VerbService {
     @Autowired
     VerbRepository verbRepository;
 
-
+    @Transactional
     public VerbDTO save(VerbDTO verbDTO) {
         var verb = new Verb();
         copyProperties(verbDTO, verb);
