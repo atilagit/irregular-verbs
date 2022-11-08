@@ -9,6 +9,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -23,5 +24,16 @@ public class VerbController {
         verbDTO = verbService.save(verbDTO);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(verbDTO.getId()).toUri();
         return ResponseEntity.created(uri).body(verbDTO);
+    }
+
+    @GetMapping()
+    public ResponseEntity<List<VerbDTO>> findAll() {
+        return ResponseEntity.ok(verbService.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<VerbDTO> getById(@PathVariable Long id) {
+        VerbDTO verbDTO = verbService.getById(id);
+        return ResponseEntity.ok(verbDTO);
     }
 }
