@@ -19,6 +19,9 @@ public class VerbDTO implements Serializable {
     @NotBlank
     private String pastParticiple;
 
+    @NotBlank
+    private String portugueseTranslation;
+
     public VerbDTO() {
     }
 
@@ -59,5 +62,13 @@ public class VerbDTO implements Serializable {
 
     public void setPastParticiple(String pastParticiple) {
         this.pastParticiple = pastParticiple;
+    }
+
+    public String getPortugueseTranslation() {
+        return portugueseTranslation;
+    }
+
+    public void setPortugueseTranslation(String portugueseTranslation) {
+        this.portugueseTranslation = portugueseTranslation;
     }
 }

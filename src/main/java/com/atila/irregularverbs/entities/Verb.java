@@ -21,6 +21,9 @@ public class Verb implements Serializable {
     @Column(nullable = false)
     private String pastParticiple;
 
+    @Column(nullable = false)
+    private String portugueseTranslation;
+
     public Verb() {
     }
 
@@ -61,5 +64,13 @@ public class Verb implements Serializable {
 
     public void setPastParticiple(String pastParticiple) {
         this.pastParticiple = pastParticiple;
+    }
+
+    public String getPortugueseTranslation() {
+        return portugueseTranslation;
+    }
+
+    public void setPortugueseTranslation(String portugueseTranslation) {
+        this.portugueseTranslation = portugueseTranslation;
     }
 }
